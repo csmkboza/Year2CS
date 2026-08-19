@@ -1,0 +1,9 @@
+class StudyTopic
+{
+    public required string Name { get; set; }
+    public required string Description { get; set; }
+    public int Difficulty { get; set; }
+
+    public string GetSummary() =>
+    $"{Name} - Difficulty: {Difficulty}\n{Description}";
+}
