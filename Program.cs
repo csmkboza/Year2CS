@@ -1,14 +1,17 @@
 ﻿IStudyRepository repository = new InMemoryStudyRepository();
 
-StudyTopic topic = new()
+StudyService service = new(repository);
+
+StudyTopic bigO = new()
 {
+    Id = Guid.NewGuid(),
     Name = "Big O",
     Description = "Understanding algorithmic complexity",
     Difficulty = 2
 };
 
-repository.Save(topic);
+service.AddTopic(bigO);
 
-StudyTopic? result = repository.GetByName("Big O");
+StudyTopic? found = service.FindTopic(bigO.Id);
 
-Console.WriteLine(result?.GetSummary());
+Console.WriteLine(found?.GetSummary());

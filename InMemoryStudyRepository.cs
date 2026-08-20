@@ -1,14 +1,14 @@
 class InMemoryStudyRepository : IStudyRepository
 {
-    private readonly List<StudyTopic> topics = [];
+    private readonly Dictionary<Guid, StudyTopic> topics = [];
 
     public void Save(StudyTopic topic)
     {
-        topics.Add(topic);
+        topics[topic.Id] = topic;
     }
 
-    public StudyTopic? GetByName(string name)
+    public StudyTopic? GetById(Guid id)
     {
-        return topics.FirstOrDefault(t => t.Name == name);
+        return topics.GetValueOrDefault(id);
     }
 }

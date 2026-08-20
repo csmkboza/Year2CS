@@ -1,5 +1,5 @@
 interface IStudyRepository
 {
     void Save(StudyTopic topic);
-    StudyTopic? GetByName(string name);
+    StudyTopic? GetById(Guid id);
 }
